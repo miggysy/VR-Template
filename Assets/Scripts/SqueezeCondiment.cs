@@ -14,4 +14,19 @@ public class SqueezeCondiment : MonoBehaviour
     {
         condimentParticles.Stop();
     }
+
+    private void AddFoodCollider(Transform foodTransform)
+    {
+        condimentParticles.collision.AddPlane(foodTransform);
+    }
+
+    private void OnEnable()
+    {
+        FoodSaucer.onFoodInitialize += AddFoodCollider;
+    }
+
+    private void OnDisable()
+    {
+        FoodSaucer.onFoodInitialize -= AddFoodCollider;
+    }
 }

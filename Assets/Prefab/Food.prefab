@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2855457977972072486}
   - component: {fileID: 2566637347485305302}
   - component: {fileID: 5627028770022062343}
+  - component: {fileID: -227698315169509554}
   - component: {fileID: -3900461035749370427}
   m_Layer: 3
   m_Name: Food
@@ -335,6 +336,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smokeEffect: {fileID: 6509056382832334922}
+--- !u!114 &-227698315169509554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4992498924060063480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecaa1b42de0c45643adfbee6583101fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &-3900461035749370427
 BoxCollider:
   m_ObjectHideFlags: 0

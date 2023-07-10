@@ -36,6 +36,11 @@ public class FoodColor : MonoBehaviour
         meshRenderer.material = rawMaterial;
     }
 
+    public void SetSaucedColor()
+    {
+        SetCookedColor();
+    }
+
     public void ReturnToCurrentMaterial()
     {
         meshRenderer.material = currentMaterial;
