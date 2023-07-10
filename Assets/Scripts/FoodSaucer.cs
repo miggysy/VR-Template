@@ -15,10 +15,9 @@ public class FoodSaucer : MonoBehaviour
         GetComponent<FoodColor>().SetSaucedColor();
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnParticleCollision(GameObject collider)
     {
-        Debug.Log("Collision Detected");
-        if(collider.gameObject.layer == LayerMask.NameToLayer("Sauce"))
+        if(collider.layer == LayerMask.NameToLayer("Sauce"))
         {
             SauceFood();
         }
