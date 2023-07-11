@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+public enum FoodState 
+{
+    Uncooked,
+    Cooked,
+    Burned,
+}
+
 public class Food : MonoBehaviour
 {
     [SerializeField] private float currentFoodTimer;
-    private bool cooked;
-    private bool burned;
+    [SerializeField] private FoodState foodState = FoodState.Uncooked;
+    public FoodState FoodState { get => foodState; set => foodState = value; }
     //Number of seconds from raw to cooked
     [SerializeField] private float cookTime;
 
@@ -22,6 +29,8 @@ public class Food : MonoBehaviour
 
     public event Action onCooked;
     public event Action onBurned;
+    public delegate void OnSauced();
+    public OnSauced onSauced;
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -56,20 +65,20 @@ public class Food : MonoBehaviour
 
         currentFoodTimer += Time.deltaTime;
 
-        if(!cooked)
+        if(foodState == FoodState.Uncooked)
         {
             if(currentFoodTimer >= cookTime)
             {
-                cooked = true;
+                foodState = FoodState.Cooked;
                 currentFoodTimer = 0;
                 onCooked?.Invoke();
              }
         }
-        else if(!burned)
+        else if(foodState == FoodState.Cooked)
         {
             if(currentFoodTimer >= burnTime)
             {
-                burned = true;
+                foodState = FoodState.Burned;
                 onBurned?.Invoke();
             }
         }

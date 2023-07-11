@@ -9,6 +9,7 @@ public class FoodColor : MonoBehaviour
     [SerializeField] Material rawMaterial;
     [SerializeField] Material cookedMaterial;
     [SerializeField] Material burnedMaterial;
+    [SerializeField] Material saucedMaterial;
     Material currentMaterial;
 
     private void Awake()
@@ -36,9 +37,10 @@ public class FoodColor : MonoBehaviour
         meshRenderer.material = rawMaterial;
     }
 
-    public void SetSaucedColor()
+    private void SetSaucedColor()
     {
-        SetCookedColor();
+        currentMaterial = saucedMaterial;
+        meshRenderer.material = saucedMaterial;
     }
 
     public void ReturnToCurrentMaterial()
@@ -50,11 +52,13 @@ public class FoodColor : MonoBehaviour
     {
         food.onCooked += SetCookedColor;
         food.onBurned += SetBurnedColor;
+        //food.onSauced += SetSaucedColor;
     }
 
     private void OnDisable()
     {
         food.onCooked -= SetCookedColor;
         food.onBurned -= SetBurnedColor;
+        //food.onSauced -= SetSaucedColor;
     }
 }
