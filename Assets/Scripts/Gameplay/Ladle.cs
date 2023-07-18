@@ -4,19 +4,31 @@ using UnityEngine;
 
 public class Ladle : MonoBehaviour
 {
-    [SerializeField] private bool isFull;
+    [SerializeField] private bool hasLiquid;
     [SerializeField] private GameObject liquid;
+    [SerializeField] private ParticleSystem pourParticles;
+    [SerializeField] private float maxFillAmount;
+    [SerializeField]private float fillAmount;
+
     [Header("Pouring")]
     [SerializeField] private bool isPouring;
     [SerializeField] private float anglePourThreshold;
+    [SerializeField] private float pourSpeed;
     private Material drinkMaterial;
+    private ParticleSystem.EmissionModule em;
+
+    private void Start()
+    {
+        em = pourParticles.emission;
+    }
 
     
     private void OnTriggerEnter(Collider collider)
     {
         if(collider.CompareTag("Drink"))
         {
-            isFull = true;
+            fillAmount = maxFillAmount;
+            hasLiquid = true;
             drinkMaterial = collider.GetComponent<MeshRenderer>().material;
             liquid.GetComponent<MeshRenderer>().material = drinkMaterial;
             liquid.SetActive(true);
@@ -25,19 +37,35 @@ public class Ladle : MonoBehaviour
 
     private void Update()
     {
-        if(isPouring || !isFull) return;
+        if(!hasLiquid)
+        {
+            em.enabled = false;
+            return;
+        }
+
         if((transform.eulerAngles.x > anglePourThreshold && transform.eulerAngles.x < 360 - anglePourThreshold) || (transform.eulerAngles.z > anglePourThreshold && transform.eulerAngles.z < 360 - anglePourThreshold))
         {
-            Debug.Log("Pouring. " + transform.eulerAngles);
             Pour();
+        }
+        else
+        {
+            isPouring = false;
+            em.enabled = false;
         }
     }
 
     private void Pour()
     {
         isPouring = true;
-        liquid.SetActive(false);
-        isFull = false;
-        isPouring = false;
+        fillAmount -= Time.deltaTime * pourSpeed;
+        em.enabled = true;
+
+        if(fillAmount <= 0)
+        {
+            em.enabled = false;
+            fillAmount = 0;
+            liquid.SetActive(false);
+            hasLiquid = false;
+        }
     }
 }
