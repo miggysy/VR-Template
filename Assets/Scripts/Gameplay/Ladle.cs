@@ -8,7 +8,7 @@ public class Ladle : MonoBehaviour
     [SerializeField] private GameObject liquid;
     [SerializeField] private ParticleSystem pourParticles;
     [SerializeField] private float maxFillAmount;
-    [SerializeField]private float fillAmount;
+    [SerializeField] private float fillAmount;
 
     [Header("Pouring")]
     [SerializeField] private bool isPouring;
@@ -30,6 +30,7 @@ public class Ladle : MonoBehaviour
             fillAmount = maxFillAmount;
             hasLiquid = true;
             drinkMaterial = collider.GetComponent<MeshRenderer>().material;
+            pourParticles.GetComponent<ParticleSystemRenderer>().material = drinkMaterial;
             liquid.GetComponent<MeshRenderer>().material = drinkMaterial;
             liquid.SetActive(true);
         }
