@@ -7,8 +7,7 @@ public class LivesManager : MonoBehaviour
 {
     [SerializeField] private int totalLives;
     [SerializeField] private int currentLives;
-    public static event Action onInitializeLives;
-    public static event Action onLoseLife;
+    public static event Action<int> onCurrentLivesChanged;
 
     private void Start()
     {
@@ -18,19 +17,23 @@ public class LivesManager : MonoBehaviour
     private void InitializeLives() 
     {
         currentLives = totalLives;
-        onInitializeLives?.Invoke();
+        onCurrentLivesChanged?.Invoke(currentLives);
     }
 
     private void LoseLife() 
     {
         currentLives--;
         CheckGameOver();
-        onLoseLife?.Invoke();
+        onCurrentLivesChanged?.Invoke(currentLives);
     }
 
     private void CheckGameOver()
     {
-        if(currentLives <= 0) GameManager.onGameOver?.Invoke();
+        if(currentLives <= 0) 
+        {
+            currentLives = 0;
+            GameManager.onGameOver?.Invoke();
+        }
     }
 
     private void OnEnable()
