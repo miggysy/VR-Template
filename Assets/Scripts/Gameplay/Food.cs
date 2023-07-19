@@ -14,6 +14,8 @@ public class Food : MonoBehaviour
 {
     [SerializeField] private FoodType type;
     public FoodType Type { get => type; }
+    [SerializeField] private SauceType typeSauce;
+    public SauceType TypeSauce { get => typeSauce; set => typeSauce = value; }
     [SerializeField] private float currentFoodTimer;
     [SerializeField] private FoodState foodState = FoodState.Uncooked;
     public FoodState FoodState { get => foodState; set => foodState = value; }

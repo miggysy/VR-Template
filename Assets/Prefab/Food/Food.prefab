@@ -307,6 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  typeSauce: 2
   currentFoodTimer: 0
   foodState: 0
   cookTime: 7
