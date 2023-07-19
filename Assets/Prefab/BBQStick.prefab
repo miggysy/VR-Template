@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 841823597642964924}
   - component: {fileID: 4906190295543650920}
   m_Layer: 6
-  m_Name: Interactable_BBQStick
+  m_Name: BBQStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
