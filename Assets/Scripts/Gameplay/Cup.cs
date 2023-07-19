@@ -2,8 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DrinkType
+{
+    NullType,
+    Gulaman,
+    BukoJuice
+}
+
 public class Cup : MonoBehaviour
 {
+    [SerializeField] private DrinkType type;
+    public DrinkType Type { get => type; }
     [SerializeField] private GameObject liquid;
     [SerializeField] private float fillSpeed;
     private float fullAmount;
@@ -24,6 +33,7 @@ public class Cup : MonoBehaviour
         if(collider.layer == LayerMask.NameToLayer("Drink"))
         {
             material = collider.GetComponent<ParticleSystemRenderer>().material;
+            SetDrinkType(material.name.Split(' ')[0]);
             StartCoroutine(FillCup());
         }
     }
@@ -53,5 +63,19 @@ public class Cup : MonoBehaviour
         liquid.transform.localScale = new Vector3(liquid.transform.localScale.x, liquid.transform.localScale.y, fillAmount);
     }
 
-
+    private void SetDrinkType(string materialName)
+    {
+        switch(materialName)
+        {
+            case "BukoJuice": 
+                type = DrinkType.BukoJuice;
+                break;
+            case "Gulaman":
+                type = DrinkType.Gulaman;
+                break;
+            default:
+                type = DrinkType.NullType;
+                break;
+        }
+    }
 }
