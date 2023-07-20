@@ -49,16 +49,9 @@ public class QueueingSystem : MonoBehaviour
     private void SetCurrentCustomer()
     {
         orderValidator.CurrentCustomer = customers[0];
+        customers[0].EnableUI();
         //start timer
 
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            RemoveCurrentCustomer();
-        }
     }
 
     private void RemoveCurrentCustomer()

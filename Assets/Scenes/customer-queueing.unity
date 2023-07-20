@@ -1962,7 +1962,7 @@ MonoBehaviour:
   customers: []
   customerPrefabs:
   - {fileID: 2859048638426314891, guid: 7158992f38c8061439da975ba18d8050, type: 3}
-  - {fileID: 6991742182326361315, guid: 107fb3e19820b124daadf89db947f498, type: 3}
+  - {fileID: 7439675064785012488, guid: fb00ee52b797cc04f9294c741bb8f0ab, type: 3}
   spawnPosition: {fileID: 1536423534}
   queueOffset: {x: -0.75, y: 0, z: 0}
   foodOrderChance: 0.75
