@@ -66,8 +66,6 @@ public class CustomerOrder : MonoBehaviour
     {
         if(foodOrders.Count == 0 && foodSauce.Count == 0 && drinkOrders.Count == 0)
         {
-            //Tell the customer that their order is complete
-
             int count = completedFoodOrders.Count;
             //Destroy the game objects on the table
             for(int i = 0; i < count; i++)
@@ -80,6 +78,9 @@ public class CustomerOrder : MonoBehaviour
             {
                 Destroy(completedDrinkOrders[0].gameObject);
             }
+
+            //Tell the customer that their order is complete
+            GameManager.onSubmittedOrder?.Invoke();
         }
     }
 

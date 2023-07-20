@@ -6,7 +6,7 @@ public class QueueingSystem : MonoBehaviour
 {
     [SerializeField] private int numCustomers;
     [SerializeField] private List<CustomerOrder> customers = new List<CustomerOrder>();
-    [SerializeField] private GameObject customerPrefab;
+    [SerializeField] private List<GameObject> customerPrefabs = new List<GameObject>();
     [SerializeField] private Transform spawnPosition;
     [SerializeField] private Vector3 queueOffset;
     [SerializeField][Range(0f, 1f)] private float foodOrderChance;
@@ -38,7 +38,8 @@ public class QueueingSystem : MonoBehaviour
             newSpawnPos = customers[customers.Count-1].gameObject.transform.position + queueOffset;
         }
 
-        GameObject instance = Instantiate(customerPrefab, newSpawnPos, customerPrefab.transform.rotation, transform);
+        int randomIndex = Random.Range(0, customerPrefabs.Count);
+        GameObject instance = Instantiate(customerPrefabs[randomIndex], newSpawnPos, customerPrefabs[randomIndex].transform.rotation, transform);
 
         customers.Add(instance.GetComponent<CustomerOrder>());
         
@@ -50,5 +51,41 @@ public class QueueingSystem : MonoBehaviour
         orderValidator.CurrentCustomer = customers[0];
         //start timer
 
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            RemoveCurrentCustomer();
+        }
+    }
+
+    private void RemoveCurrentCustomer()
+    {
+        Destroy(customers[0].gameObject);
+        customers.RemoveAt(0);
+        if(customers.Count > 0) 
+        {
+            SetCurrentCustomer();
+            //shift all the customers
+            foreach(CustomerOrder customer in customers)
+            {
+                customer.gameObject.transform.position -= queueOffset;
+            }
+        }
+        SpawnCustomer();
+    }
+
+    private void OnEnable()
+    {
+        GameManager.onSubmittedOrder += RemoveCurrentCustomer;
+        GameManager.onCustomerLeft += RemoveCurrentCustomer;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.onSubmittedOrder -= RemoveCurrentCustomer;
+        GameManager.onCustomerLeft -= RemoveCurrentCustomer;
     }
 }
