@@ -1,6 +1,13 @@
 using UnityEngine;
 using System;
 
+public enum SauceType
+{
+    SweetAndSpicy,
+    Vinegar,
+    Unsauced
+}
+
 public class FoodSaucer : MonoBehaviour
 {
     private Food food;
@@ -40,6 +47,7 @@ public class FoodSaucer : MonoBehaviour
         if(collider.layer == LayerMask.NameToLayer("Sauce"))
         {
             sauceEffect.gameObject.GetComponent<ParticleSystemRenderer>().material = collider.GetComponent<ParticleSystemRenderer>().material;
+            food.TypeSauce = GetSauceTypeFromMaterial(sauceEffect.gameObject.GetComponent<ParticleSystemRenderer>().material.name.Split(' ')[0]);
             SauceFood();
             isSauced = true;
         }
@@ -57,5 +65,15 @@ public class FoodSaucer : MonoBehaviour
         food.onSauced -= PlaySauceEffect;
         food.onCooked -= StopSauceEffect;
         food.onBurned -= StopSauceEffect;
+    }
+
+    private SauceType GetSauceTypeFromMaterial(string materialName)
+    {
+        switch(materialName)
+        {
+            case "SweetAndSpicy": return SauceType.SweetAndSpicy;
+            case "Vinegar": return SauceType.Vinegar;
+            default: return SauceType.Unsauced;
+        }
     }
 }

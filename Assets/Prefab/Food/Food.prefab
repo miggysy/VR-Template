@@ -306,6 +306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a9907f6ad5981468b2499d3171c369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  typeSauce: 2
   currentFoodTimer: 0
   foodState: 0
   cookTime: 7
