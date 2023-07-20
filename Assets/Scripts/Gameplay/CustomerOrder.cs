@@ -9,6 +9,28 @@ public class CustomerOrder : MonoBehaviour
     [SerializeField] List<DrinkType> drinkOrders = new List<DrinkType>();
     List<FoodManager> completedFoodOrders = new List<FoodManager>();
     List<Cup> completedDrinkOrders = new List<Cup>();
+    private QueueingSystem queueingSystem;
+
+    private void Awake()
+    {
+        queueingSystem = FindObjectOfType<QueueingSystem>();
+    }
+
+    private void OnEnable()
+    {
+        //set instance's order
+        if(Random.Range(0f, 1f) <= queueingSystem.FoodOrderChance)
+        {
+            //set food
+            foodOrders.Add(GenerateRandomFoodOrder());
+            foodSauce.Add(GenerateRandomSauce());
+        }
+        if(Random.Range(0f, 1f) <= queueingSystem.DrinkOrderChance || foodOrders.Count == 0)
+        {
+            //set drink
+            drinkOrders.Add(GenerateRandomDrinkOrder());
+        } 
+    }
 
     public void CheckFoodOrder(FoodManager foodOrder)
     {
@@ -61,14 +83,6 @@ public class CustomerOrder : MonoBehaviour
         }
     }
 
-    public void GenerateRandomOrder()
-    {
-        if(foodOrders.Count > 0) foodOrders.Clear();
-        if(drinkOrders.Count > 0) drinkOrders.Clear();
-        foodOrders.Add(GenerateRandomFoodOrder());
-        drinkOrders.Add(GenerateRandomDrinkOrder());
-    }
-
     private FoodType GenerateRandomFoodOrder()
     {
         switch(Random.Range(0,4))
@@ -78,6 +92,16 @@ public class CustomerOrder : MonoBehaviour
             case 2: return FoodType.Isaw;
             case 3: return FoodType.Liver;
             default: return FoodType.NullType;
+        }
+    }
+
+    private SauceType GenerateRandomSauce()
+    {
+        switch(Random.Range(0,3))
+        {
+            case 0: return SauceType.SweetAndSpicy;
+            case 1: return SauceType.Vinegar;
+            default: return SauceType.Unsauced;
         }
     }
 
