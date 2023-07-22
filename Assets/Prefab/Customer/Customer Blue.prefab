@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3235468245553553969}
   - component: {fileID: 3128884943711356383}
   m_Layer: 0
-  m_Name: Customer
+  m_Name: Customer Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 0.37285522, y: 0.37285522, z: 0.37285522}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2405140028884279224}
+  - {fileID: 8787472778825554573}
   - {fileID: 1493717942057223071}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -364,7 +364,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1001 &2804193770399414355
+--- !u!1001 &9113568837075385702
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -433,9 +433,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dc902806c58d8d4eaefe0b585562a52, type: 3}
---- !u!4 &2405140028884279224 stripped
+--- !u!4 &8787472778825554573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8dc902806c58d8d4eaefe0b585562a52,
     type: 3}
-  m_PrefabInstance: {fileID: 2804193770399414355}
+  m_PrefabInstance: {fileID: 9113568837075385702}
   m_PrefabAsset: {fileID: 0}
