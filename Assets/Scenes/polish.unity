@@ -1984,7 +1984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d8d4ac4a408aa42a3593e7a8aa2b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalLives: 1
+  totalLives: 2
   currentLives: 0
 --- !u!4 &535653551
 Transform:
@@ -6811,6 +6811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de90a1e4d4c4b04abef1f9c0caeb943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreReward: 10
   scoreText: {fileID: 612187407}
 --- !u!1 &2132593782
 GameObject:

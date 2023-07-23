@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
             hasGameStarted = true;
             onStartGame?.Invoke();
             menu.SetActive(false);
+            isPaused = false;
             SwitchToDirectInteractors();
         }
         
