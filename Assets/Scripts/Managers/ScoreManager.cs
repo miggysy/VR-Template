@@ -20,6 +20,6 @@ public class ScoreManager : MonoBehaviour
 
     private void UpdateScoreUI()
     {
-        scoreText.text = "Score: <b>" + score.ToString() + "</b>";
+        scoreText.text = score.ToString();
     }
 }
