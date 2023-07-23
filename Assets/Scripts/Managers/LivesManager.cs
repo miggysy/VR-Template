@@ -39,12 +39,10 @@ public class LivesManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.onCustomerLeft += LoseLife;
-        GameManager.onOrderWrong += LoseLife;
     }
 
     private void OnDisable()
     {
         GameManager.onCustomerLeft -= LoseLife;
-        GameManager.onOrderWrong -= LoseLife;
     }
 }
