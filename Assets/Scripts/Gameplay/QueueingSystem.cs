@@ -21,9 +21,9 @@ public class QueueingSystem : MonoBehaviour
         orderValidator = FindObjectOfType<OrderValidator>();
     }
 
-    private void Start()
+    private void SpawnAtStart()
     {
-        for(int i = 0; i < numCustomers; i++)
+        for(int i = 0; i < numCustomers; i++)   
         {
             SpawnCustomer();
         }
@@ -72,12 +72,14 @@ public class QueueingSystem : MonoBehaviour
 
     private void OnEnable()
     {
+        GameManager.onStartGame += SpawnAtStart;
         GameManager.onSubmittedOrder += RemoveCurrentCustomer;
         GameManager.onCustomerLeft += RemoveCurrentCustomer;
     }
 
     private void OnDisable()
     {
+        GameManager.onStartGame -= SpawnAtStart;
         GameManager.onSubmittedOrder -= RemoveCurrentCustomer;
         GameManager.onCustomerLeft -= RemoveCurrentCustomer;
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public delegate void GameEvent();
+    public static GameEvent onStartGame;    //Call when the game starts
     public static GameEvent onSubmittedOrder;   //Call when the order is submitted
     public static GameEvent onCustomerLeft; //Call when the customer's timer runs out without getting an order
     public static GameEvent onGameOver; //Call when the player runs out of lives
@@ -25,5 +26,10 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         onGameOver -= GameOver;
+    }
+
+    public void StartGame()
+    {
+        onStartGame?.Invoke();
     }
 }
