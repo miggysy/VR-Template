@@ -58,11 +58,6 @@ public class CustomerOrder : MonoBehaviour
             completedFoodOrders.Add(foodOrder);
             CheckIfOrderIsComplete();
         }
-        else
-        {
-            //Say that the food order is incorrect
-            
-        }
     }
 
     public void CheckDrinkOrder(Cup drinkOrder)
@@ -72,10 +67,6 @@ public class CustomerOrder : MonoBehaviour
             drinkOrders.Remove(drinkOrder.Type);
             completedDrinkOrders.Add(drinkOrder);
             CheckIfOrderIsComplete();
-        }
-        else
-        {
-            //Say that the drink order is incorrect
         }
     }
 

@@ -50,7 +50,7 @@ public class QueueingSystem : MonoBehaviour
     {
         orderValidator.CurrentCustomer = customers[0];
         customers[0].EnableUI();
-        //start timer
+        customers[0].gameObject.GetComponent<Timer>().ResetTimer();
 
     }
 

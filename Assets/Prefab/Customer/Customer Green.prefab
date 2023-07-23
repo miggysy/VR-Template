@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3235468245553553969}
   - component: {fileID: 3128884943711356383}
+  - component: {fileID: 8160395166236535028}
   m_Layer: 0
   m_Name: Customer Green
   m_TagString: Untagged
@@ -51,6 +52,22 @@ MonoBehaviour:
   drinkOrders: 
   orderUI: {fileID: 5448004163116403351}
   orderText: {fileID: 2969268568965539685}
+--- !u!114 &8160395166236535028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2859048638426314891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd298e2bf9f6624089c840879e77527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 30
+  minTime: 20
+  angryMaterial: {fileID: 2100000, guid: a929c08e453fc744490d533bb93bb1a4, type: 2}
+  currentTime: 0
 --- !u!1 &3855766866637086942
 GameObject:
   m_ObjectHideFlags: 0
