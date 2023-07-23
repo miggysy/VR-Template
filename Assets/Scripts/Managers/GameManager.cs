@@ -1,35 +1,92 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private bool isPaused;
+    [Header("Menu References")]
+    [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject leftRayInteractor;
+    [SerializeField] private GameObject rightRayInteractor;
+    [SerializeField] private GameObject leftDirectInteractor;
+    [SerializeField] private GameObject rightDirectInteractor;
+    public bool IsPaused { get => isPaused; }
     public delegate void GameEvent();
     public static GameEvent onStartGame;    //Call when the game starts
     public static GameEvent onSubmittedOrder;   //Call when the order is submitted
     public static GameEvent onCustomerLeft; //Call when the customer's timer runs out without getting an order
     public static GameEvent onGameOver; //Call when the player runs out of lives
-
-    
-    //FOR TESTING PURPOSES ONLY -------------------------------------------------------------
-
-    private void GameOver()
-    {
-        Debug.Log("Game Over!");
-    }
-
-    private void OnEnable()
-    {
-        onGameOver += GameOver;
-    }
-
-    private void OnDisable()
-    {
-        onGameOver -= GameOver;
-    }
+    public static GameEvent onPauseGame;
+    public static GameEvent onResumeGame;
+    private bool hasGameStarted;
 
     public void StartGame()
     {
-        onStartGame?.Invoke();
+        if(hasGameStarted)
+        {
+            ResumeGame();
+        }
+        else
+        {
+            hasGameStarted = true;
+            onStartGame?.Invoke();
+            menu.SetActive(false);
+            SwitchToDirectInteractors();
+        }
+        
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    private void PauseGame()
+    {
+        isPaused = true;
+        onPauseGame?.Invoke();
+        menu.SetActive(true);
+        SwitchToRayInteractors();
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        onResumeGame?.Invoke();
+        menu.SetActive(false);
+        SwitchToDirectInteractors();
+    }
+
+    private void OnToggleMenu()
+    {
+        if(!hasGameStarted) return;
+        if(isPaused)
+        {
+            ResumeGame();
+        }
+        else
+        {
+            PauseGame();
+        }
+    }
+
+    private void SwitchToRayInteractors()
+    {
+        leftRayInteractor.SetActive(true);
+        rightRayInteractor.SetActive(true);
+
+        leftDirectInteractor.SetActive(false);
+        rightDirectInteractor.SetActive(false);
+    }
+
+    private void SwitchToDirectInteractors()
+    {
+        leftRayInteractor.SetActive(false);
+        rightRayInteractor.SetActive(false);
+
+        leftDirectInteractor.SetActive(true);
+        rightDirectInteractor.SetActive(true);
     }
 }

@@ -70,11 +70,25 @@ public class QueueingSystem : MonoBehaviour
         SpawnCustomer();
     }
 
+    private void ToggleHideCustomers()
+    {
+        foreach(CustomerOrder customer in customers)
+        {
+            if(customer == customers[0])
+            {
+                customer.GetComponent<CustomerOrder>().OrderUI.SetActive(!customer.GetComponent<CustomerOrder>().OrderUI.activeSelf);
+            }
+            customer.gameObject.GetComponentInChildren<MeshRenderer>().enabled = !customer.gameObject.GetComponentInChildren<MeshRenderer>().enabled;
+        }
+    }
+
     private void OnEnable()
     {
         GameManager.onStartGame += SpawnAtStart;
         GameManager.onSubmittedOrder += RemoveCurrentCustomer;
         GameManager.onCustomerLeft += RemoveCurrentCustomer;
+        GameManager.onPauseGame += ToggleHideCustomers;
+        GameManager.onResumeGame += ToggleHideCustomers;
     }
 
     private void OnDisable()
@@ -82,5 +96,7 @@ public class QueueingSystem : MonoBehaviour
         GameManager.onStartGame -= SpawnAtStart;
         GameManager.onSubmittedOrder -= RemoveCurrentCustomer;
         GameManager.onCustomerLeft -= RemoveCurrentCustomer;
+        GameManager.onPauseGame -= ToggleHideCustomers;
+        GameManager.onResumeGame -= ToggleHideCustomers;
     }
 }

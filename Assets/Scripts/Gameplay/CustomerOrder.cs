@@ -10,6 +10,7 @@ public class CustomerOrder : MonoBehaviour
     [SerializeField] List<DrinkType> drinkOrders = new List<DrinkType>();
     [Header("Customer Order UI")]
     [SerializeField] GameObject orderUI;
+    public GameObject OrderUI { get => orderUI; }
     [SerializeField] TextMeshProUGUI orderText;
     List<FoodManager> completedFoodOrders = new List<FoodManager>();
     List<Cup> completedDrinkOrders = new List<Cup>();
@@ -22,6 +23,7 @@ public class CustomerOrder : MonoBehaviour
 
     private void OnEnable()
     {
+
         //set instance's order
         if(Random.Range(0f, 1f) <= queueingSystem.FoodOrderChance)
         {
@@ -47,6 +49,11 @@ public class CustomerOrder : MonoBehaviour
     public void EnableUI()
     {
         orderUI.SetActive(true);
+    }
+
+    public void DisableUI()
+    {
+        orderUI.SetActive(false);
     }
 
     public void CheckFoodOrder(FoodManager foodOrder)

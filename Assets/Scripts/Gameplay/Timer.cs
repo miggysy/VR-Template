@@ -8,12 +8,18 @@ public class Timer : MonoBehaviour
     [SerializeField] private Material angryMaterial;
     private bool countDown;
     private bool isAngry;
+    private GameManager gameManager;
 
     [SerializeField] private float currentTime;
 
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
     private void Update()
     {
-        if(!countDown) return;
+        if(gameManager.IsPaused || !countDown) return;
         currentTime -= Time.deltaTime;
 
         if(currentTime <= angerThreshold && !isAngry)
