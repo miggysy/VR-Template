@@ -89,4 +89,20 @@ public class GameManager : MonoBehaviour
         leftDirectInteractor.SetActive(true);
         rightDirectInteractor.SetActive(true);
     }
+
+    private void EndGame()
+    {
+        PauseGame();
+        hasGameStarted = false;
+    }
+
+    private void OnEnable()
+    {
+        onGameOver += EndGame;
+    }
+
+    private void OnDisable()
+    {
+        onGameOver -= EndGame;
+    }
 }

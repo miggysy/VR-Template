@@ -1984,7 +1984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d8d4ac4a408aa42a3593e7a8aa2b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalLives: 3
+  totalLives: 1
   currentLives: 0
 --- !u!4 &535653551
 Transform:

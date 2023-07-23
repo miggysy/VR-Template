@@ -56,8 +56,11 @@ public class QueueingSystem : MonoBehaviour
 
     private void RemoveCurrentCustomer()
     {
+        if(customers.Count == 0) return;
+        
         Destroy(customers[0].gameObject);
         customers.RemoveAt(0);
+
         if(customers.Count > 0) 
         {
             SetCurrentCustomer();
@@ -82,6 +85,16 @@ public class QueueingSystem : MonoBehaviour
         }
     }
 
+    private void DestroyAllCustomers()
+    {
+        foreach(CustomerOrder customer in customers)
+        {
+            Destroy(customer.gameObject);
+        }
+
+        customers.Clear();
+    }
+
     private void OnEnable()
     {
         GameManager.onStartGame += SpawnAtStart;
@@ -89,6 +102,7 @@ public class QueueingSystem : MonoBehaviour
         GameManager.onCustomerLeft += RemoveCurrentCustomer;
         GameManager.onPauseGame += ToggleHideCustomers;
         GameManager.onResumeGame += ToggleHideCustomers;
+        GameManager.onGameOver += DestroyAllCustomers;
     }
 
     private void OnDisable()
@@ -98,5 +112,6 @@ public class QueueingSystem : MonoBehaviour
         GameManager.onCustomerLeft -= RemoveCurrentCustomer;
         GameManager.onPauseGame -= ToggleHideCustomers;
         GameManager.onResumeGame -= ToggleHideCustomers;
+        GameManager.onGameOver -= DestroyAllCustomers;
     }
 }
