@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 1865171548}
   - component: {fileID: 1865171543}
   - component: {fileID: 1865171544}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
