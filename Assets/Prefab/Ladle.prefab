@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 3432980552057977582}
   - component: {fileID: 3405268901747517328}
   - component: {fileID: 3405268901747517343}
+  - component: {fileID: 8355433405685694795}
   m_Layer: 0
   m_Name: Ladle
   m_TagString: Untagged
@@ -300,6 +301,23 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &8355433405685694795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3406736306921774238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bcb0af5904a6342921b3348d0219d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLevel: -0.35
+  respawn: 1
+  spawnPointTransform: {fileID: 0}
+  spawnPointCoordinates: {x: 0, y: 0, z: 0}
+  spawnRotation: {x: 0, y: -180, z: 0}
 --- !u!1 &6756695502735626572
 GameObject:
   m_ObjectHideFlags: 0

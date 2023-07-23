@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1025739891265110902}
   - component: {fileID: 1025739891265110889}
   - component: {fileID: 1025739891265110901}
+  - component: {fileID: 1154639538031993348}
   m_Layer: 11
   m_Name: PlasticCup
   m_TagString: Untagged
@@ -283,6 +284,23 @@ MonoBehaviour:
   type: 0
   liquid: {fileID: 1025739892611025553}
   fillSpeed: 0.5
+--- !u!114 &1154639538031993348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025739891265209804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bcb0af5904a6342921b3348d0219d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLevel: -0.2
+  respawn: 0
+  spawnPointTransform: {fileID: 0}
+  spawnPointCoordinates: {x: 0, y: 0, z: 0}
+  spawnRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1025739891512896611
 GameObject:
   m_ObjectHideFlags: 0
