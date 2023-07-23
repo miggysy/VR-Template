@@ -64,8 +64,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd298e2bf9f6624089c840879e77527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 30
-  minTime: 20
+  maxTime: 45
+  minTime: 30
+  angerThreshold: 10
   angryMaterial: {fileID: 2100000, guid: a929c08e453fc744490d533bb93bb1a4, type: 2}
   currentTime: 0
 --- !u!1 &3855766866637086942

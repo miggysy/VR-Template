@@ -15,7 +15,7 @@ public class FoodColor : MonoBehaviour
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        food = GetComponent<Food>();
+        food = transform.parent.GetComponent<Food>();
         ResetColor();
     }
 
