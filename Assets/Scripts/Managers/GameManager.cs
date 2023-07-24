@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject rightRayInteractor;
     [SerializeField] private GameObject leftDirectInteractor;
     [SerializeField] private GameObject rightDirectInteractor;
+    [SerializeField] private GameObject pausedText;
     public bool IsPaused { get => isPaused; }
     public delegate void GameEvent();
     public static GameEvent onStartGame;    //Call when the game starts
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         onPauseGame?.Invoke();
         menu.SetActive(true);
         SwitchToRayInteractors();
+        if(hasGameStarted)pausedText.SetActive(true);
     }
 
     public void ResumeGame()
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour
         onResumeGame?.Invoke();
         menu.SetActive(false);
         SwitchToDirectInteractors();
+        pausedText.SetActive(false);
     }
 
     private void OnToggleMenu()
@@ -93,8 +96,8 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        PauseGame();
         hasGameStarted = false;
+        PauseGame();
     }
 
     private void OnEnable()

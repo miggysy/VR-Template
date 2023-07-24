@@ -2060,7 +2060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d8d4ac4a408aa42a3593e7a8aa2b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalLives: 2
+  totalLives: 3
   currentLives: 0
 --- !u!4 &535653551
 Transform:
@@ -3814,6 +3814,7 @@ MonoBehaviour:
   rightRayInteractor: {fileID: 1786443159}
   leftDirectInteractor: {fileID: 1348787631}
   rightDirectInteractor: {fileID: 778086073}
+  pausedText: {fileID: 1725010898}
 --- !u!4 &914076206
 Transform:
   m_ObjectHideFlags: 0
@@ -6400,7 +6401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1725010899
 RectTransform:
   m_ObjectHideFlags: 0
