@@ -27,4 +27,21 @@ public class FellToFloor : MonoBehaviour
             }
         }
     }
+
+    private void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        if(respawn) return;
+        GameManager.onGameOver += DestroySelf;
+    }
+
+    private void OnDisable()
+    {
+        if(respawn) return;
+        GameManager.onGameOver -= DestroySelf;
+    }
 }
