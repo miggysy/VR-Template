@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject leftDirectInteractor;
     [SerializeField] private GameObject rightDirectInteractor;
     [SerializeField] private GameObject pausedText;
+    [SerializeField] private GameObject gameOverText;
     public bool IsPaused { get => isPaused; }
     public delegate void GameEvent();
     public static GameEvent onStartGame;    //Call when the game starts
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
             hasGameStarted = true;
             onStartGame?.Invoke();
             menu.SetActive(false);
+            gameOverText.SetActive(false);
             isPaused = false;
             SwitchToDirectInteractors();
         }
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     {
         hasGameStarted = false;
+        gameOverText.SetActive(true);
         PauseGame();
     }
 
