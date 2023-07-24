@@ -7899,6 +7899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 10
   scoreText: {fileID: 612187407}
+  bestScoreText: {fileID: 831075921}
 --- !u!1 &2132593782
 GameObject:
   m_ObjectHideFlags: 0
