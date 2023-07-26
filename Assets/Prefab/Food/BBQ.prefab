@@ -7,6 +7,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1480998078937210582, guid: fbf68fe8b01ea7647b4f3eafa1839c7f,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 11.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480998078937210582, guid: fbf68fe8b01ea7647b4f3eafa1839c7f,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 4.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480998078937210582, guid: fbf68fe8b01ea7647b4f3eafa1839c7f,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: -2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480998078937210582, guid: fbf68fe8b01ea7647b4f3eafa1839c7f,
+        type: 3}
+      propertyPath: ShapeModule.m_Position.x
+      value: -0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480998078937210582, guid: fbf68fe8b01ea7647b4f3eafa1839c7f,
+        type: 3}
+      propertyPath: ShapeModule.m_Position.z
+      value: -0.29
+      objectReference: {fileID: 0}
     - target: {fileID: 2855457977972072486, guid: fbf68fe8b01ea7647b4f3eafa1839c7f,
         type: 3}
       propertyPath: type
@@ -133,6 +158,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BBQ
+      objectReference: {fileID: 0}
+    - target: {fileID: 5422349047291491725, guid: fbf68fe8b01ea7647b4f3eafa1839c7f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6941612079242225010, guid: fbf68fe8b01ea7647b4f3eafa1839c7f,
         type: 3}
