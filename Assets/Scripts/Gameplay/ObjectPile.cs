@@ -31,6 +31,7 @@ public class ObjectPile : MonoBehaviour
     {
         followController = true;
         instance = Instantiate(pileObject, transform.position, pileObject.transform.rotation, spawnedObjectParent); 
+        instance.transform.GetComponentInChildren<MeshRenderer>().enabled = false;
         controller = args.interactorObject;
         instance.GetComponent<XRGrabInteractable>().selectEntered.AddListener(DetachInstance);
     }
@@ -44,6 +45,7 @@ public class ObjectPile : MonoBehaviour
 
     public void DetachInstance(SelectEnterEventArgs args)
     {
+        instance.transform.GetComponentInChildren<MeshRenderer>().enabled = true;
         followController = false;
         instance = null;
     }

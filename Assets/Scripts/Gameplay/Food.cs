@@ -35,6 +35,12 @@ public class Food : MonoBehaviour
     public event Action onBurned;
     public delegate void OnSauced();
     public OnSauced onSauced;
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -67,23 +73,26 @@ public class Food : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        currentFoodTimer += Time.deltaTime;
+        if(!gameManager.IsPaused) 
+        {
+            currentFoodTimer += Time.deltaTime;
 
-        if(foodState == FoodState.Uncooked)
-        {
-            if(currentFoodTimer >= cookTime)
+            if(foodState == FoodState.Uncooked)
             {
-                foodState = FoodState.Cooked;
-                currentFoodTimer = 0;
-                onCooked?.Invoke();
-             }
-        }
-        else if(foodState == FoodState.Cooked)
-        {
-            if(currentFoodTimer >= burnTime)
+                if(currentFoodTimer >= cookTime)
+                {
+                    foodState = FoodState.Cooked;
+                    currentFoodTimer = 0;
+                    onCooked?.Invoke();
+                }
+            }
+            else if(foodState == FoodState.Cooked)
             {
-                foodState = FoodState.Burned;
-                onBurned?.Invoke();
+                if(currentFoodTimer >= burnTime)
+                {
+                    foodState = FoodState.Burned;
+                    onBurned?.Invoke();
+                }
             }
         }
 

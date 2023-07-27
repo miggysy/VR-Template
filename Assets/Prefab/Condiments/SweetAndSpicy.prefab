@@ -22,26 +22,6 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 2128638556369667737, guid: adb131675d15990479a4ce247576db19,
-        type: 3}
-      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 2100000, guid: 83b5a203c5274a044b54dae906fcbe03, type: 2}
-    - target: {fileID: 2128638556369667737, guid: adb131675d15990479a4ce247576db19,
-        type: 3}
-      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 2100000, guid: 83b5a203c5274a044b54dae906fcbe03, type: 2}
-    - target: {fileID: 2128638556369667737, guid: adb131675d15990479a4ce247576db19,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 2100000, guid: 83b5a203c5274a044b54dae906fcbe03, type: 2}
-    - target: {fileID: 2128638556369667737, guid: adb131675d15990479a4ce247576db19,
-        type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 2100000, guid: 83b5a203c5274a044b54dae906fcbe03, type: 2}
     - target: {fileID: 2128638556369667738, guid: adb131675d15990479a4ce247576db19,
         type: 3}
       propertyPath: m_RootOrder
@@ -100,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 2128638556369667739, guid: adb131675d15990479a4ce247576db19,
         type: 3}
       propertyPath: m_Name
-      value: Interactable_Condiment (Sweet & Spicy)
+      value: SweetAndSpicy
       objectReference: {fileID: 0}
     - target: {fileID: 2128638556369667742, guid: adb131675d15990479a4ce247576db19,
         type: 3}

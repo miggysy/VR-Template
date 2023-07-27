@@ -9,11 +9,6 @@ public class LivesManager : MonoBehaviour
     [SerializeField] private int currentLives;
     public static event Action<int> onCurrentLivesChanged;
 
-    private void Start()
-    {
-        InitializeLives();
-    }
-
     private void InitializeLives() 
     {
         currentLives = totalLives;
@@ -38,11 +33,13 @@ public class LivesManager : MonoBehaviour
 
     private void OnEnable()
     {
+        GameManager.onStartGame += InitializeLives;
         GameManager.onCustomerLeft += LoseLife;
     }
 
     private void OnDisable()
     {
+        GameManager.onStartGame -= InitializeLives;
         GameManager.onCustomerLeft -= LoseLife;
     }
 }

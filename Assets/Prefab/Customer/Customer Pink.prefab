@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3235468245553553969}
   - component: {fileID: 3128884943711356383}
+  - component: {fileID: 5691617744770224059}
   m_Layer: 0
   m_Name: Customer Pink
   m_TagString: Untagged
@@ -26,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 2859048638426314891}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.37285522, y: 0.37285522, z: 0.37285522}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.45000002, y: 0.45000002, z: 0.45000002}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3670001456091766460}
   - {fileID: 1493717942057223071}
@@ -51,6 +52,23 @@ MonoBehaviour:
   drinkOrders: 
   orderUI: {fileID: 5448004163116403351}
   orderText: {fileID: 2969268568965539685}
+--- !u!114 &5691617744770224059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2859048638426314891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd298e2bf9f6624089c840879e77527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 45
+  minTime: 30
+  angerThreshold: 10
+  angryMaterial: {fileID: 2100000, guid: a929c08e453fc744490d533bb93bb1a4, type: 2}
+  currentTime: 0
 --- !u!1 &3855766866637086942
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -21,9 +21,9 @@ public class QueueingSystem : MonoBehaviour
         orderValidator = FindObjectOfType<OrderValidator>();
     }
 
-    private void Start()
+    private void SpawnAtStart()
     {
-        for(int i = 0; i < numCustomers; i++)
+        for(int i = 0; i < numCustomers; i++)   
         {
             SpawnCustomer();
         }
@@ -50,14 +50,17 @@ public class QueueingSystem : MonoBehaviour
     {
         orderValidator.CurrentCustomer = customers[0];
         customers[0].EnableUI();
-        //start timer
+        customers[0].gameObject.GetComponent<Timer>().ResetTimer();
 
     }
 
     private void RemoveCurrentCustomer()
     {
+        if(customers.Count == 0) return;
+        
         Destroy(customers[0].gameObject);
         customers.RemoveAt(0);
+
         if(customers.Count > 0) 
         {
             SetCurrentCustomer();
@@ -70,15 +73,45 @@ public class QueueingSystem : MonoBehaviour
         SpawnCustomer();
     }
 
+    private void ToggleHideCustomers()
+    {
+        foreach(CustomerOrder customer in customers)
+        {
+            if(customer == customers[0])
+            {
+                customer.GetComponent<CustomerOrder>().OrderUI.SetActive(!customer.GetComponent<CustomerOrder>().OrderUI.activeSelf);
+            }
+            customer.gameObject.GetComponentInChildren<MeshRenderer>().enabled = !customer.gameObject.GetComponentInChildren<MeshRenderer>().enabled;
+        }
+    }
+
+    private void DestroyAllCustomers()
+    {
+        foreach(CustomerOrder customer in customers)
+        {
+            Destroy(customer.gameObject);
+        }
+
+        customers.Clear();
+    }
+
     private void OnEnable()
     {
+        GameManager.onStartGame += SpawnAtStart;
         GameManager.onSubmittedOrder += RemoveCurrentCustomer;
         GameManager.onCustomerLeft += RemoveCurrentCustomer;
+        GameManager.onPauseGame += ToggleHideCustomers;
+        GameManager.onResumeGame += ToggleHideCustomers;
+        GameManager.onGameOver += DestroyAllCustomers;
     }
 
     private void OnDisable()
     {
+        GameManager.onStartGame -= SpawnAtStart;
         GameManager.onSubmittedOrder -= RemoveCurrentCustomer;
         GameManager.onCustomerLeft -= RemoveCurrentCustomer;
+        GameManager.onPauseGame -= ToggleHideCustomers;
+        GameManager.onResumeGame -= ToggleHideCustomers;
+        GameManager.onGameOver -= DestroyAllCustomers;
     }
 }

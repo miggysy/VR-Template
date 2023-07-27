@@ -10,6 +10,7 @@ public class CustomerOrder : MonoBehaviour
     [SerializeField] List<DrinkType> drinkOrders = new List<DrinkType>();
     [Header("Customer Order UI")]
     [SerializeField] GameObject orderUI;
+    public GameObject OrderUI { get => orderUI; }
     [SerializeField] TextMeshProUGUI orderText;
     List<FoodManager> completedFoodOrders = new List<FoodManager>();
     List<Cup> completedDrinkOrders = new List<Cup>();
@@ -22,6 +23,7 @@ public class CustomerOrder : MonoBehaviour
 
     private void OnEnable()
     {
+
         //set instance's order
         if(Random.Range(0f, 1f) <= queueingSystem.FoodOrderChance)
         {
@@ -49,6 +51,11 @@ public class CustomerOrder : MonoBehaviour
         orderUI.SetActive(true);
     }
 
+    public void DisableUI()
+    {
+        orderUI.SetActive(false);
+    }
+
     public void CheckFoodOrder(FoodManager foodOrder)
     {
         if(foodOrder.IsCooked && foodOrders.Contains(foodOrder.Type) && foodSauce[foodOrders.IndexOf(foodOrder.Type)] == foodOrder.TypeSauce)
@@ -57,11 +64,6 @@ public class CustomerOrder : MonoBehaviour
             foodSauce.Remove(foodOrder.TypeSauce);
             completedFoodOrders.Add(foodOrder);
             CheckIfOrderIsComplete();
-        }
-        else
-        {
-            //Say that the food order is incorrect
-            
         }
     }
 
@@ -72,10 +74,6 @@ public class CustomerOrder : MonoBehaviour
             drinkOrders.Remove(drinkOrder.Type);
             completedDrinkOrders.Add(drinkOrder);
             CheckIfOrderIsComplete();
-        }
-        else
-        {
-            //Say that the drink order is incorrect
         }
     }
 
@@ -140,7 +138,7 @@ public class CustomerOrder : MonoBehaviour
             case FoodType.BBQ: return "BBQ";
             case FoodType.Isaw: return "Isaw";
             case FoodType.Betamax: return "Betamax";
-            case FoodType.Liver: return "Liver";
+            case FoodType.Liver: return "Laman Loob";
             default: return "";
         }
     }
