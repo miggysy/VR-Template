@@ -138,7 +138,7 @@ public class CustomerOrder : MonoBehaviour
             case FoodType.BBQ: return "BBQ";
             case FoodType.Isaw: return "Isaw";
             case FoodType.Betamax: return "Betamax";
-            case FoodType.Liver: return "Liver";
+            case FoodType.Liver: return "Laman Loob";
             default: return "";
         }
     }
