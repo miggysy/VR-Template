@@ -12,6 +12,7 @@ public class Ladle : MonoBehaviour
 
     [Header("Pouring")]
     [SerializeField] private bool isPouring;
+    public bool IsPouring { get => isPouring; }
     [SerializeField] private float anglePourThreshold;
     [SerializeField] private float pourSpeed;
     private Material drinkMaterial;
@@ -40,6 +41,7 @@ public class Ladle : MonoBehaviour
     {
         if(!hasLiquid)
         {
+            isPouring = false;
             em.enabled = false;
             return;
         }
